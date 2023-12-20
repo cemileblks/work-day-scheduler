@@ -66,6 +66,11 @@ header {
   color: white;
 }
 
+.saveBtn:hover {
+  background-color: #005b7f;
+  transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
 .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
