@@ -5,18 +5,12 @@ let timeBlockContainer = $('.container');
 let currentHour = parseInt(dayjs().format('H'));
 let hourDescriptions = JSON.parse(localStorage.getItem('hourDescriptions')) || {};
 
-
 currentDay.text(dayjs().format('dddd, MMMM DD'));
-
-console.log (currentHour);
-
 
 $('.time-block').each(function(){
     let timeBlock = parseInt($(this).attr('id').match(/\d+/)[0]);
-    console.log(timeBlock);
 
     if (timeBlock === currentHour) {
-        console.log(true);
         $(this).addClass("present");
     } else if (timeBlock > currentHour) {
         $(this).addClass("future");
@@ -25,11 +19,9 @@ $('.time-block').each(function(){
 
 // to save the data to local storage on save button click
 saveBtn.on("click",function(event) {
-    // console.log(event);
+
     let timeBlock = $(event.target).closest('.time-block');
-    // console.log(timeBlock);
     let timeBlockId = timeBlock.attr('id');
-    // console.log(timeBlockId);
 
     let textContent = timeBlock.find('.description').val();
     console.log(textContent);
@@ -66,7 +58,6 @@ $('.time-block').each(function () {
       let descriptionOfTimeBlock = hourDescriptions[timeBlockId];
 
       if (descriptionOfTimeBlock !== undefined) {
-        console.log(this);
         $(this).find('.description').val(descriptionOfTimeBlock);
       }
     }
