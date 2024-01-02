@@ -1,5 +1,6 @@
 let currentDay = $('#currentDay');
 let saveBtn = $('.saveBtn');
+let timeBlockContainer = $('.container');
 let currentHour = parseInt(dayjs().format('H'));
 let hourDescriptions = JSON.parse(localStorage.getItem('hourDescriptions')) || {};
 
@@ -36,7 +37,20 @@ saveBtn.on("click",function(event) {
     console.log(hourDescriptions);
 
     localStorage.setItem('hourDescriptions', JSON.stringify(hourDescriptions));
-});
+
+    //message for when user saved their todo items
+    const savedMessage = $('<div class="alert alert-success text-center mb-1 p-1 small" role="alert">');
+    savedMessage.text("Appointment added to Local-Storage");
+  
+    timeBlockContainer.prepend(savedMessage);
+  
+    // Remove the message after 1 second
+    setTimeout(function () {
+      savedMessage.fadeOut(500, function () {
+        $(this).remove();
+      });
+    }, 1000);
+  });
 
 
 // to load data from local storage when page loads
