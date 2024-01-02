@@ -1,5 +1,6 @@
 let currentDay = $('#currentDay');
 let saveBtn = $('.saveBtn');
+let clearBtn = $('#clearLocalStorage')
 let timeBlockContainer = $('.container');
 let currentHour = parseInt(dayjs().format('H'));
 let hourDescriptions = JSON.parse(localStorage.getItem('hourDescriptions')) || {};
@@ -70,3 +71,10 @@ $('.time-block').each(function () {
       }
     }
   });
+
+  //Clear local storage for next day
+  clearBtn.on("click", function() {
+    localStorage.clear();
+    hourDescriptions = {};
+    $('.time-block .description').val('');
+  })
