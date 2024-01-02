@@ -1,6 +1,6 @@
 let currentDay = $('#currentDay');
 let saveBtn = $('.saveBtn');
-let currentHour = "hour-" + dayjs().format('H');
+let currentHour = parseInt(dayjs().format('H'));
 
 
 
@@ -10,7 +10,7 @@ console.log (currentHour);
 
 
 $('.time-block').each(function(){
-    let timeBlock = $(this).attr('id');
+    let timeBlock = parseInt($(this).attr('id').match(/\d+/)[0]);
     console.log(timeBlock);
 
     if (timeBlock === currentHour) {
