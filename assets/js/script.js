@@ -4,7 +4,7 @@ let clearBtn = $('#clearLocalStorage')
 let timeBlockContainer = $('.container');
 let currentHour = parseInt(dayjs().format('H'));
 let hourDescriptions = JSON.parse(localStorage.getItem('hourDescriptions')) || {};
-
+console
 currentDay.text(dayjs().format('dddd, MMMM DD'));
 
 $('.time-block').each(function(){
@@ -24,10 +24,8 @@ saveBtn.on("click",function(event) {
     let timeBlockId = timeBlock.attr('id');
 
     let textContent = timeBlock.find('.description').val();
-    console.log(textContent);
 
     hourDescriptions[timeBlockId] = textContent;
-    console.log(hourDescriptions);
 
     localStorage.setItem('hourDescriptions', JSON.stringify(hourDescriptions));
 
